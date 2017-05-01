@@ -5,7 +5,15 @@ class QueryResults(object):
 
     @cherrypy.expose
     def index(self):
-        return "Hello world!"
+        return """<html>
+          <head></head>
+          <body>
+            <form method="get" action="search">
+              <input type="text" value="Search..." name="query" />
+              <button type="submit">Search Queries</button>
+            </form>
+          </body>
+        </html>"""
 
     @cherrypy.expose
     def search(self, query=""):
