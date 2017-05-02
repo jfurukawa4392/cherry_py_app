@@ -7,18 +7,6 @@ class QueryResults(object):
     @cherrypy.expose
     def index(self):
         return open('./public/html/index.html')
-        #
-        # """<html>
-        #   <head>
-        #     <link href="/static/css/style.scss" rel="stylesheet">
-        #   </head>
-        #   <body>
-        #     <form method="get" action="search">
-        #       <input type="text" value="Search..." name="query" />
-        #       <button type="submit">Search Queries</button>
-        #     </form>
-        #   </body>
-        # </html>"""
 
     @cherrypy.expose
     def search(self, query=""):
