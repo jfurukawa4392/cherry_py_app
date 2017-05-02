@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Root extends React.Component{
+class App extends React.Component{
   constructor(props){
     super(props);
   }
@@ -9,10 +9,10 @@ class Root extends React.Component{
     return(
       <content
         className="app-outer">
-        Root Render
+        App Render
       </content>
     );
   }
 }
 
-export default Root;
+export default App;
