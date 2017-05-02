@@ -1,8 +1,14 @@
 import React from 'react';
+import SearchBar from './search_bar';
+import Display from './display';
 
 class App extends React.Component{
   constructor(props){
     super(props);
+
+    this.state = {
+      query: ""
+    };
   }
 
   render(){
@@ -10,6 +16,8 @@ class App extends React.Component{
       <content
         className="app-outer">
         App Render
+        <SearchBar />
+        <Display />
       </content>
     );
   }
