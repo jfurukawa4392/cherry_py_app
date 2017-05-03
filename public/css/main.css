@@ -19,16 +19,28 @@ time, mark, audio, video {
 
 .app-outer {
   padding: 10vh 5vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center; }
-  .app-outer form {
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #FFEAD0;
+  color: #96616B; }
+  .app-outer .menu {
     display: flex;
-    justify-content: center; }
+    flex-direction: column; }
+    .app-outer .menu form {
+      display: flex;
+      justify-content: center; }
 
 .display-outer {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-around;
+  box-sizing: border-box;
+  width: 50vw; }
   .display-outer ul {
     list-style: none;
-    margin: 15px; }
+    margin: 15px;
+    text-align: center; }
+    .display-outer ul h3 {
+      margin-bottom: 5px;
+      border-bottom: 2px solid black; }

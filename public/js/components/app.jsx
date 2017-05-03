@@ -38,12 +38,26 @@ class App extends React.Component{
     return(
       <content
         className="app-outer">
-        <SearchBar
-          handleSubmit={this.handleSubmit}
-          handleUpdate={this.handleUpdate}
-          query={this.state.query}/>
-        <Display
-          data={this.state.data}/>
+        <div className="menu">
+          <h1>Insight Engines Queries</h1>
+          <SearchBar
+            handleSubmit={this.handleSubmit}
+            handleUpdate={this.handleUpdate}
+            query={this.state.query}/>
+          <aside className="examples">
+            <ul>
+              <li>traffic</li>
+              <li>logins to infected machines</li>
+              <li>cisco traffic</li>
+              <li>intrusion attacks from outside the US</li>
+              <li>avg cpu load last week vs normal</li>
+            </ul>
+          </aside>
+        </div>
+        <div>
+          <Display
+            data={this.state.data}/>
+        </div>
       </content>
     );
   }

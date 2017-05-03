@@ -10283,12 +10283,58 @@ var App = function (_React$Component) {
         'content',
         {
           className: 'app-outer' },
-        _react2.default.createElement(_search_bar2.default, {
-          handleSubmit: this.handleSubmit,
-          handleUpdate: this.handleUpdate,
-          query: this.state.query }),
-        _react2.default.createElement(_display2.default, {
-          data: this.state.data })
+        _react2.default.createElement(
+          'div',
+          { className: 'menu' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Insight Engines Queries'
+          ),
+          _react2.default.createElement(_search_bar2.default, {
+            handleSubmit: this.handleSubmit,
+            handleUpdate: this.handleUpdate,
+            query: this.state.query }),
+          _react2.default.createElement(
+            'aside',
+            { className: 'examples' },
+            _react2.default.createElement(
+              'ul',
+              null,
+              _react2.default.createElement(
+                'li',
+                null,
+                'traffic'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'logins to infected machines'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'cisco traffic'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'intrusion attacks from outside the US'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'avg cpu load last week vs normal'
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_display2.default, {
+            data: this.state.data })
+        )
       );
     }
   }]);
@@ -11162,6 +11208,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _react = __webpack_require__(26);
 
 var _react2 = _interopRequireDefault(_react);
@@ -11171,27 +11219,48 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Display = function Display(props) {
   var lists = _react2.default.createElement('ul', null);
   var listItems = void 0;
+  var values = void 0;
 
-  if (props.data) {
+  if (props.data && props.data != "error") {
     lists = Object.keys(props.data).map(function (el, idx) {
-      listItems = props.data[el].map(function (val, jdx) {
+      values = props.data[el];
+
+      if (typeof values === 'string') {
+        values = [values];
+      } else if ((typeof values === 'undefined' ? 'undefined' : _typeof(values)) === 'object' && !Array.isArray(values)) {}
+
+      listItems = values.map(function (val, jdx) {
         return _react2.default.createElement(
           'li',
           { key: jdx },
-          val.join(' ')
+          Array.isArray(val) ? val.join(' ') : val
         );
       });
 
       return _react2.default.createElement(
         'ul',
         { key: el },
-        el.toUpperCase(),
+        _react2.default.createElement(
+          'h3',
+          null,
+          el.toUpperCase()
+        ),
         listItems
       );
     });
+  } else if (props.data == "error") {
+    lists = _react2.default.createElement(
+      'h3',
+      null,
+      'That was not a valid query, please try again'
+    );
+  } else {
+    lists = _react2.default.createElement(
+      'h3',
+      null,
+      'Enter a query from the sidebar examples'
+    );
   }
-
-  if (props.data !== null) {}
 
   return _react2.default.createElement(
     'div',
