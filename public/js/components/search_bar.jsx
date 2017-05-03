@@ -5,27 +5,13 @@ class SearchBar extends React.Component{
     super(props);
   }
 
-  handleUpdate(e){
-    e.preventDefault();
-
-    this.setState({
-      query: e.target.value
-    });
-  }
-
-  handleSubmit(e){
-    e.preventDefault();
-
-    let xhr
-  }
-
   render(){
     return(
-      <form method="get" onSubmit={e => this.handleSubmit(e)}>
+      <form method="get" onSubmit={e => this.props.handleSubmit(e)}>
         <input
           type="text"
-          value="Search..."
-          onChange={e => this.handleUpdate(e)}
+          value={this.props.query}
+          onChange={e => this.props.handleUpdate(e)}
           name="query"/>
         <button type="submit">Search Queries</button>
       </form>
