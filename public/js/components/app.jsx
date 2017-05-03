@@ -21,7 +21,10 @@ class App extends React.Component{
 
     axios.get(`/search/?query=${this.state.query}`)
       .then(res => {
-
+        console.log(res);
+        this.setState({
+          data: res.data
+        });
       })
   }
 

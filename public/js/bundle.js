@@ -10258,9 +10258,16 @@ var App = function (_React$Component) {
   _createClass(App, [{
     key: 'handleSubmit',
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
 
-      _axios2.default.get('/search/?query=' + this.state.query).then(function (res) {});
+      _axios2.default.get('/search/?query=' + this.state.query).then(function (res) {
+        console.log(res);
+        _this2.setState({
+          data: res.data
+        });
+      });
     }
   }, {
     key: 'handleUpdate',
@@ -11162,12 +11169,34 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Display = function Display(props) {
-  // let { datamodels, date_filters } = props;
+  var lists = _react2.default.createElement('ul', null);
+  var listItems = void 0;
+
+  if (props.data) {
+    lists = Object.keys(props.data).map(function (el, idx) {
+      listItems = props.data[el].map(function (val, jdx) {
+        return _react2.default.createElement(
+          'li',
+          { key: jdx },
+          val.join(' ')
+        );
+      });
+
+      return _react2.default.createElement(
+        'ul',
+        { key: el },
+        el.toUpperCase(),
+        listItems
+      );
+    });
+  }
+
+  if (props.data !== null) {}
 
   return _react2.default.createElement(
-    "div",
-    { className: "display-outer" },
-    "Display"
+    'div',
+    { className: 'display-outer' },
+    lists
   );
 };
 

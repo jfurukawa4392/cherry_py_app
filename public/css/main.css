@@ -18,7 +18,17 @@ time, mark, audio, video {
   vertical-align: baseline; }
 
 .app-outer {
+  padding: 10vh 5vw;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 10vh 5vw; }
+  flex-direction: column;
+  justify-content: center; }
+  .app-outer form {
+    display: flex;
+    justify-content: center; }
+
+.display-outer {
+  display: flex;
+  justify-content: space-around; }
+  .display-outer ul {
+    list-style: none;
+    margin: 15px; }
